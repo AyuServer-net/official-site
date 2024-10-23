@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>参加方法 - AyuServer</title>
+  <link rel="icon" href="images/logo.png">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f1f1f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .step {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .discord-code {
+      font-size: 18px;
+      font-weight: bold;
+      color: #4caf50;
+    }
+
+    .discord-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: white;
+      background: #7289DA;
+      font-weight: bold;
+      border: solid 4px #7289DA;
+      border-radius: 8px;
+    }
+
+    .discord-btn:hover {
+      background: white;
+      color: #7289DA;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    .copyable {
+      cursor: pointer;
+      color: #00bbff;
+      font-weight: bold;
+      border: none;
+      background: none;
+    }
+
+    .copyable:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        alert(text + ' がコピーされました');
+      }, function(err) {
+        alert('コピーに失敗しました: ', err);
+      });
+    }
+  </script>
+</head>
+<body>
+
+<div class="container">
+  <h1>AyuServerの参加方法</h1>
+  <p>以下の手順に従って、Minecraftサーバーに参加してください。</p>
+
+  <div class="grid">
+    <div class="java">
+      <h2>〔JAVA版〕</h2>
+      <div class="step">
+        <p>
+          IP: <button class="copyable" onclick="copyToClipboard('mc.ayuserver.net')">mc.ayuserver.net</button><br>
+          バージョン: 1.8.x～1.21.x
+        </p>
+      </div>
+
+      <div class="step">
+        <p>Minecraftを起動しマルチプレイを選択します。<br>サーバーを追加から追加し接続します。</p>
+      </div>
+
+      <div class="step">
+        <img src="images/join-je.png" width=480 height=279 alt="JoinJE">
+      </div>
+    </div>
+
+    <div class="be">
+      <h2>〔統合版〕</h2>
+      <div class="step">
+        <p>
+          IP: <button class="copyable" onclick="copyToClipboard('be.ayuserver.net')">be.ayuserver.net</button><br>
+          ポート: <button class="copyable" onclick="copyToClipboard('19132')">19132</button>
+        </p>
+      </div>
+
+      <div class="step">
+        <p>Minecraftを起動し、AyuServer01にフレンド送信を行ってください。<br>
+        フレンド欄にAyuServerが表示されたら、そこから参加できます。</p>
+      </div>
+
+      <div class="step">
+        <img src="images/join-be.png" width=480 height=279 alt="JoinBE">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

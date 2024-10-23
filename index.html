@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AyuServer</title>
+  <link rel="icon" href="images/logo.png">
+  <meta name="description" content="AyuServer!">
+  <meta name="keywords" content="ayuserver, AyuServer minecraft, ayu, minecraft, mmorpg, java, Minecraft">
+  <meta name="author" content="support@ayuserver.net">
+  <meta property="og:title" content="AyuServer">
+  <meta property="og:description" content="Minecraftの経済生活サーバー">
+  <meta property="og:url" content="https://ayuserver.net">
+  <meta property="og:image" content="images/logo.png">
+  <script src="https://kit.fontawesome.com/d402eeb41d.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+       $('a[href^="#"]').on('click', function(event) {
+          var target = $(this.getAttribute('href'));
+          if( target.length ) {
+             event.preventDefault();
+             $('html, body').stop().animate({
+                scrollTop: target.offset().top
+             }, 1000);
+          }
+       });
+    });
+    
+    
+    window.addEventListener("scroll", function() {
+       var divsAndLinks = [
+          { divId: "home", linkId: "home_btn" },
+          { divId: "about", linkId: "about_btn" },
+          { divId: "faq", linkId: "faq_btn" },
+          { divId: "contact", linkId: "contact_btn" }
+       ];
+    
+       divsAndLinks.forEach(function(pair) {
+          var div = document.getElementById(pair.divId);
+          var link = document.getElementById(pair.linkId);
+    
+          if (div && link) {
+             var divPosition = div.getBoundingClientRect();
+    
+             if (divPosition.top < window.innerHeight && divPosition.bottom > 0) {
+                link.classList.add("text-green-500");
+                divsAndLinks.forEach(function(otherPair) {
+                   if (otherPair.linkId !== pair.linkId) {
+                      document.getElementById(otherPair.linkId).classList.remove("text-green-500");
+                   }
+                });
+             } else {
+                link.classList.remove("text-green-500");
+             }
+          }
+       });
+    });
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Notable&family=Noto+Serif+JP:wght@200&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap&family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    .font-electrolize { font-family: 'Electrolize', sans-serif; }
+    .font-notable { font-family: 'Notable', sans-serif; }
+    .font-ubuntu { font-family: 'Ubuntu', sans-serif; }
+    .font-notoserifjp { font-family: 'Noto Serif JP', serif; }
+    .font-notosansjp { font-family: 'Noto Sans JP', sans-serif; }
+
+    .discord-btn {
+        display: inline-block;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        color: white;
+        background: #7289DA;
+        font-weight: bold;
+        border: solid 4px #7289DA;
+        border-radius: 8px;
+    }
+    
+    .discord-btn:hover {
+        background: white;
+        color: #7289DA;
+    }
+
+    .join-btn {
+        display: inline-block;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        color: white;
+        background: #00bfff;
+        font-weight: bold;
+        border: solid 4px #00bfff;
+        border-radius: 8px;
+    }
+    
+    .join-btn:hover {
+        background: white;
+        color: #00bfff;
+    }
+
+    .vote-btn {
+        display: inline-block;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+        color: white;
+        background: #00a497;
+        font-weight: bold;
+        border: solid 4px #00a497;
+        border-radius: 8px;
+    }
+    
+    .vote-btn:hover {
+        background: white;
+        color: #00a497;
+    }
+    
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .centered-link {
+         display: flex;
+    }
+
+    .centered-image {
+         max-width: 100%; /* 画像が親要素内に収まるように最大幅を設定 */
+    }
+
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const elements = document.querySelectorAll('.onloadnimate');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('opacity-100');
+                  entry.target.classList.remove('translate-y-10');
+                }else{
+                  entry.target.classList.remove('opacity-100');
+                  entry.target.classList.add('translate-y-10');
+                }
+            });
+        });
+
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+  </script>
+
+
+</head>
+<body class="h-screen bg-black bg-slate-950 text-slate-50 font-notosansjp text-sm font-medium">
+  <div class="w-full h-12 fixed top-5 z-[100] flex flex-row">
+    <div class="h-full w-full xl:w-[90rem] mx-auto flex flex-col xl:flex-row gap-5 xl:gap-0 text-center items-center xl:text-left xl:items-start">
+
+      <div class="w-96 h-12 flex flex-col justify-center">
+        <a href="#top" class="font-ubuntu font-bold text-lg">AyuServer</a>
+      </div>
+
+      <div class="w-full bg-transparent h-12 flex flex-row gap-16 text-center items-center justify-center text-xs">
+        <a href="#home" class="duration-300 hover:underline" id="home_btn">Home</a>
+        <a href="#about" class="duration-300 hover:underline" id="about_btn">About</a>
+        <a href="#faq" class="duration-300 hover:underline" id="faq_btn">FAQ</a>
+        <a href="#contact" class="duration-300 hover:underline" id="contact_btn">Contact</a>
+      </div>
+
+      <div class="w-fit xl:w-96 h-12 flex flex-row gap-16 text-center items-center justify-end text-xs">
+        <a href="https://dc.ayuserver.net/" class="duration-300 hover:underline">
+          <div class="relative group">
+            <i class="fa-brands fa-discord duration-300 hover:scale-[120%] hover:rotate-45"></i>
+            <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-slate-950 rounded-xl h-12 w-32  hidden group-hover:block">
+              <div class="h-full w-full flex flex-col items-center justify-center text-center">
+                公式Discordサーバー
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <a href="https://ayuserver.net/join/" class="duration-300 hover:underline">
+          <div class="relative group">
+            <i class="fa-solid fa-gamepad duration-300 hover:scale-[120%] hover:rotate-45"></i>
+            <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-slate-950 rounded-xl h-12 w-32  hidden group-hover:block">
+              <div class="h-full w-full flex flex-col items-center justify-center text-center">
+                サーバーへの参加方法
+              </div>
+            </div>  
+          </div>
+        </a>
+
+        <a href="https://map.ayuserver.net/" class="duration-300 hover:underline">
+          <div class="relative group">
+            <i class="fa-solid fa-map duration-300 hover:scale-[120%] hover:rotate-45"></i>
+            <div class="absolute -bottom-16 left-1/2 -translate-x-1/2 bg-slate-950 rounded-xl h-12 w-32  hidden group-hover:block">
+              <div class="h-full w-full flex flex-col items-center justify-center text-center">
+                サーバー内マップを表示
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="top" class="h-full w-full relative">
+    
+    <div class="h-full w-full bg-[url('images/background.png')] bg-center bg-cover bg-no-repeat overflow-hidden">
+      
+      <div class="h-full w-full bg-stone-950 bg-opacity-20 flex flex-col">
+
+        <div class="h-[32rem] xl:h-64 w-full xl:w-[75rem] m-auto flex flex-col xl:flex-row">
+
+          <div class="xl:mt-0 h-full w-full xl:w-1/2 flex flex-col justify-center text-4xl text-slate-50 px-2 z-20">
+  
+            <div class="flex flex-col xl:flex-row mt-16 xl:mt-0">
+              <p>AyuServerは、</p>
+              <div class="h-12 w-80 overflow-hidden">
+                <div class="h-12 w-fit text-left" id="msg1"></div>
+                <div class="h-12 w-fit text-left" id="msg2"></div>
+              </div>
+            </div>
+            <p>Minecraftの経済生活鯖。</p>
+            <p class="text-lg">初心者も作業厨も大歓迎。</p>
+          </div>
+
+          <div class="h-full w-full xl:w-1/2 relative">
+            <img src="images/player.png" alt="player.png" class="z-10 absolute -right-24 -top-36 xl:left-1/2 xl:-translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 h-[30rem] w-auto">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="absolute bottom-0 h-64 w-full flex flex-col  bg-gradient-to-t from-slate-950/100 via-slate-950/80"></div>
+  </div>
+  
+  <div id="home" class="h-auto min-h-full w-full flex flex-col py-16">
+    <p class="text-4xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10">飽きさせない、楽しさを。</p>
+    <p class="text-2xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10 mb-16">忘れられない時間をあなたと。</p>
+    <div class="h-auto w-full xl:w-[90rem] mx-auto flex flex-row flex-wrap gap-5 justify-center px-5">
+      
+      <div class="min-h-[15rem] w-full xl:w-[30rem] rounded-xl border-2 border-slate-900 duration-300 hover:border-green-500 glow-box p-5 flex flex-col">
+        <p class="text-2xl">飽きさせない。</p>
+        <p class="text-xl font-light mt-auto">
+          定期アップデートによるコンテンツ追加で、常に新しい経験を。<br>
+          ユーザ第一の運営方針で、楽しい経験を。<br>
+          ここでしか、得られない楽しい何かを。
+        </p>
+      </div>
+
+      <div class="min-h-[15rem] w-full xl:w-[30rem] rounded-xl border-2 border-slate-900 duration-300 hover:border-green-500 glow-box p-5 flex flex-col">
+        <p class="text-2xl">離れさせない。</p>
+        <p class="text-xl font-light mt-auto">
+          中毒性のあるゲームを、あなたに。<br>
+          時間を忘れ、永遠と楽しめる空間を。<br>
+          ここでしか、体験できない楽しい何かを。
+        </p>
+      </div>
+
+      <div class="min-h-[15rem] w-full xl:w-[30rem] rounded-xl border-2 border-slate-900 duration-300 hover:border-green-500 glow-box p-5 flex flex-col">
+        <p class="text-2xl">笑顔を創る。</p>
+        <p class="text-xl font-light mt-auto">
+          プレイヤーの皆様が、笑顔になれる。<br>
+          そんなサーバーを、ゲームを、コミュニティーを。<br>
+          ここでしか、手に入らない楽しい何かを。
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="about" class="min-h-full w-full py-16">
+    <p class="text-4xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10">AyuServerについて</p>
+    <p class="text-2xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10 mb-16">サーバー内のスクリーンショットを抜粋してご紹介</p>
+
+    <div class="h-auto w-full xl:w-[50rem] mx-auto flex flex-col gap-5 px-5">
+      <div class="h-64 w-full flex flex-col xl:flex-row">
+        <div class="h-full w-full xl:w-1/2 bg-[url('images/life.png')] bg-cover bg-no-repeat bg-center rounded-xl"></div>
+        <div class="h-full w-full xl:w-1/2 p-5 xl:px-5 xl:py-0">
+          <p class="text-2xl font-bold">生活鯖</p>
+          <p class="text-lg font-ubuntu"><br>
+            生活鯖です。<br>
+            この鯖で建築をしたり<br>
+            鯖民と交流することができます。</p>
+        </div>
+        
+      </div>
+      <div class="h-64 w-full flex flex-col xl:flex-row">
+        <div class="h-full w-full xl:w-1/2 bg-[url('images/resource.png')] bg-cover bg-no-repeat bg-center rounded-xl"></div>
+        <div class="h-full w-full xl:w-1/2 p-5 xl:px-5 xl:py-0">
+          <p class="text-2xl font-bold">資源鯖</p>
+          <p class="text-lg font-ubuntu"><br>
+            資源鯖です。<br>
+            この資源鯖では資源を取ったり<br>
+            トラップタワーなどを建設し<br>
+            素材を取ることが可能です。</p>
+        </div>
+      </div>
+      <div class="h-64 w-full flex flex-col xl:flex-row">
+        <div class="h-full w-full xl:w-1/2 bg-[url('images/reset-resource.png')] bg-cover bg-no-repeat bg-center rounded-xl"></div>
+        <div class="h-full w-full xl:w-1/2 p-5 xl:px-5 xl:py-0">
+          <p class="text-2xl font-bold">リセット資源鯖</p>
+          <p class="text-lg font-ubuntu"><br>
+            リセット資源鯖です。<br>
+            毎月1日にリセットされ<br>
+            シード値が変わります。<br>
+            エンドラ卵争奪戦に参加しますか？</p>
+        </div>
+      </div>
+      <div class="h-64 w-full flex flex-col xl:flex-row">
+        <div class="h-full w-full xl:w-1/2 bg-[url('images/casino.png')] bg-cover bg-no-repeat bg-center rounded-xl"></div>
+        <div class="h-full w-full xl:w-1/2 p-5 xl:px-5 xl:py-0">
+          <p class="text-2xl font-bold">カジノ鯖</p>
+          <p class="text-lg font-ubuntu"><br>
+            カジノ鯖です。<br>
+            ここではスロットやルーレットが遊べ、<br>
+            イベントとで氷上ボートレースなどを<br>
+            やっています！ぜひ参加してみてね！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="faq" class="min-h-full w-full py-16">
+    <p class="text-4xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10">FAQ</p>
+    <p class="text-2xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10 mb-16">質問をクリックして回答を見る</p>
+    <div class="flex flex-col h-auto w-auto gap-5 px-5">
+
+      <details class="mx-auto h-auto w-full xl:w-[35rem] cursor-pointer">
+        <summary class="text-lg border-b border-stone-100 p-5">サーバーの参加方法は？</summary>
+        <div class="w-full  border-b border-stone-100 p-5 text-md">
+          参加方法は下のボタンを押して確認できます。<br>
+          <a href="https://ayuserver.net/join/" class="join-btn">サーバーに参加する</a>
+        </div>
+      </details>
+
+      <details class="mx-auto h-auto w-full xl:w-[35rem] cursor-pointer">
+        <summary class="text-lg border-b border-stone-100 p-5">Discordはどこから参加しますか？</summary>
+        <div class="w-full  border-b border-stone-100 p-5 text-md">
+          Discordは下のボタンを押して参加できます。<br>
+          <a href="https://dc.ayuserver.net/" class="discord-btn">Discordに参加する</a>
+        </div>
+      </details>
+
+      <p class="text-2xl text-center mt-5">
+        解決しませんか？<br>
+        Discordで聞いてください!<br>
+        <br>
+          <a href="https://dc.ayuserver.net/" class="discord-btn">Discordに参加する</a>
+          <br>
+          <br/>          
+          <iframe src="https://discord.com/widget?id=1228279875610345502&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" style="display: block; margin: auto;"></iframe>
+        </p>
+      
+        <p class="text-2xl text-center mt-5">
+          AyuServerでは、<br>
+          投票が可能です!<br>
+          <br>
+            <a href="https://ayuserver.net/vote/" class="vote-btn">AyuServerに投票する(準備中)</a>
+
+      <p class="text-2xl text-center mt-5">
+        <a href="https://minecraft.jp/servers/mc.ayuserver.net">AyuServer</a>
+      </p>
+
+      <div style="text-align: center;">
+        <a href="https://minecraft.jp/servers/mc.ayuserver.net">
+          <img src="https://minecraft.jp/servers/mc.ayuserver.net/banner/5/560x95.png" style="display: block; margin: auto;"/>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="contact" class="min-h-full w-full flex flex-col justify-center bg-[url('images/bottom.png')] bg-cover bg-no-repeat bg-center">
+
+    <div class="m-auto">
+      <p class="text-4xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10">連絡先</p>
+      <p class="text-2xl text-center duration-[1000ms] opacity-0 onloadnimate translate-y-10 mb-16">もし何かあれば以下の連絡先に連絡してください</p>
+
+      <div class="w-fit h-auto text-left mx-auto">
+        <p class="text-xl"><i class="fa-solid fa-envelope mr-5 w-4"></i> <a href="mailto:support@ayuserver.net">support@ayuserver.net</a></p>
+        <p class="text-xl"><i class="fa-brands fa-discord mr-5 w-4"></i> <a href="https://dc.ayuserver.net/">Discordサーバー</a></p>
+        <p class="text-xl"><i class="fa-brands fa-twitter mr-5 w-4"></i> <a href="https://x.com/AyuMCServer">AyuMCServer</a></p>
+      </div>
+    </div>
+
+    <div class="h-auto w-full px-16 py-8 mt-auto">
+      <div class="w-full h-auto flex flex-col xl:flex-row">
+        <p>&copy; 2024 AyuServer</p>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script>
+  var messages = ["たのしい。","やめられない。","とまらない。"];
+
+  document.getElementById('msg1').innerHTML = messages[0];
+
+  var step = 0;
+  setTimeout(function(){
+    setInterval(function (){
+      var nextstep = ( (messages[step+1] != null) ? (step + 1) : 0 );
+      var message = messages[nextstep];
+      document.getElementById('msg2').innerHTML = message;
+      document.getElementById('msg1').classList.add('-translate-y-12', "duration-300");
+      document.getElementById('msg2').classList.add('-translate-y-12', "duration-300");
+      if(nextstep != 0){
+        step += 1;
+      }else {
+        step = 0;
+      }
+      setTimeout(function(){
+        document.getElementById('msg1').innerHTML = message;
+        document.getElementById('msg2').innerHTML = "";
+        document.getElementById('msg1').classList.remove('-translate-y-12', "duration-300");
+        document.getElementById('msg2').classList.remove('-translate-y-12', "duration-300");
+      },500)
+    }, 1000);
+  },1000);
+</script>
+</html>
+
